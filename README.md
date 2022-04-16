@@ -20,7 +20,7 @@ Explanation: This is a demo project that uses .NET MVC framework to showcase
              
              
              
-<sql query>             
+[sql query]             
              
 SET ANSI_NULLS ON  
 GO  
