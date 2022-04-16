@@ -7,8 +7,7 @@ using System.Web;
 
 namespace MVCWithAdo.Models
 {
-    public class CRUDModel
-    {
+
         public class CRUDModel
         {
             /// <summary>    
@@ -18,7 +17,7 @@ namespace MVCWithAdo.Models
             public DataTable GetAllStudents()
             {
                 DataTable dt = new DataTable();
-                string strConString = @"Data Source=WELCOME-PC\SQLSERVER2008;Initial Catalog=MyDB;Integrated Security=True";
+                string strConString = @"Data Source=DESKTOP-KK4RJ40\SQLEXPRESS;Initial Catalog=mvcAdoDb;Integrated Security=True";
                 using (SqlConnection con = new SqlConnection(strConString))
                 {
                     con.Open();
@@ -38,7 +37,7 @@ namespace MVCWithAdo.Models
             {
                 DataTable dt = new DataTable();
 
-                string strConString = @"Data Source=WELCOME-PC\SQLSERVER2008;Initial Catalog=MyDB;Integrated Security=True";
+                string strConString = @"Data Source=DESKTOP-KK4RJ40\SQLEXPRESS;Initial Catalog=mvcAdoDb;Integrated Security=True";
 
                 using (SqlConnection con = new SqlConnection(strConString))
                 {
@@ -60,7 +59,7 @@ namespace MVCWithAdo.Models
             /// <returns></returns>    
             public int UpdateStudent(int intStudentID, string strStudentName, string strGender, int intAge)
             {
-                string strConString = @"Data Source=DESKTOP-KK4RJ40\SQLEXPRESS;Initial Catalog=MyDB;Integrated Security=True";
+                string strConString = @"Data Source=DESKTOP-KK4RJ40\SQLEXPRESS;Initial Catalog=mvcAdoDb;Integrated Security=True";
 
                 using (SqlConnection con = new SqlConnection(strConString))
                 {
@@ -75,21 +74,21 @@ namespace MVCWithAdo.Models
                 }
             }
 
-            /// <summary>    
-            /// Insert Student record into DB    
-            /// </summary>    
-            /// <param name="strStudentName"></param>    
-            /// <param name="strGender"></param>    
-            /// <param name="intAge"></param>    
-            /// <returns></returns>    
-            public int InsertStudent(string strStudentName, string strGender, int intAge)
+        /// <summary>    
+        /// Insert Student record into DB    
+        /// </summary>    
+        /// <param name="strStudentName"></param> : [varchar](50)
+        /// <param name="strGender"></param>    : [varchar](6)
+        /// <param name="intAge"></param>    : int
+        /// <returns></returns>    
+        public int InsertStudent(string strStudentName, string strGender, int intAge)
             {
-                string strConString = @"Data Source=WELCOME-PC\SQLSERVER2008;Initial Catalog=MyDB;Integrated Security=True";
+                string strConString = @"Data Source=DESKTOP-KK4RJ40\SQLEXPRESS;Initial Catalog=mvcAdoDb;Integrated Security=True";
 
                 using (SqlConnection con = new SqlConnection(strConString))
                 {
                     con.Open();
-                    string query = "Insert into tblStudent (student_name, student_age,student_gender) values(@studname, @studage , @gender)";
+                    string query = "Insert into tblStudent (student_name, student_age, student_gender) values (@studname, @studage , @gender)";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@studname", strStudentName);
                     cmd.Parameters.AddWithValue("@studage", intAge);
@@ -105,7 +104,7 @@ namespace MVCWithAdo.Models
             /// <returns></returns>    
             public int DeleteStudent(int intStudentID)
             {
-                string strConString = @"Data Source=WELCOME-PC\SQLSERVER2008;Initial Catalog=MyDB;Integrated Security=True";
+                string strConString = @"Data Source=DESKTOP-KK4RJ40\SQLEXPRESS;Initial Catalog=mvcAdoDb;Integrated Security=True";
 
                 using (SqlConnection con = new SqlConnection(strConString))
                 {
@@ -118,4 +117,3 @@ namespace MVCWithAdo.Models
             }
         }
     }
-}
